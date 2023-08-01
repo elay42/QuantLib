@@ -1,5 +1,5 @@
 image:
-  - Visual Studio 2015
+  - Visual Studio 2019
   - Visual Studio 2022
 
 platform: x64
@@ -7,29 +7,6 @@ configuration: Release
 
 version: ci.{build}
 
-build:
-  parallel: false
-  project: QuantLib.sln
-  verbosity: normal
-
-for:
--
-  matrix:
-    only:
-      - image: Visual Studio 2015
-  before_build:
-    - COPY .appveyor\missing.props .\Build.props
-  test_script:
-    - .\test-suite\bin\QuantLib-test-suite-x64-mt.exe --log_level=message --build_info=yes -- --faster
--
-  matrix:
-    only:
-      - image: Visual Studio 2022
-  before_build:
-    - DIR C:\Libraries
-    - DIR C:\Libraries\boost_1_82_0
-    - COPY .appveyor\missing.props .\Build.props
-    - COPY .appveyor\Unity.props .\Directory.Build.props
-  test_script:
-    - .\test-suite\bin\QuantLib-test-suite-x64-mt.exe --log_level=message --build_info=yes
-
+build_script:
+  - DIR C:\Libraries
+  - DIR C:\Libraries\boost_1_82_0
