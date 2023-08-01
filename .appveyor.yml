@@ -18,7 +18,7 @@ for:
     only:
       - image: Visual Studio 2015
   before_build:
-    - COPY .appveyor\VS2015.props .\Build.props
+    - COPY .appveyor\missing.props .\Build.props
   test_script:
     - .\test-suite\bin\QuantLib-test-suite-x64-mt.exe --log_level=message --build_info=yes -- --faster
 -
@@ -26,7 +26,9 @@ for:
     only:
       - image: Visual Studio 2022
   before_build:
-    - COPY .appveyor\VS2022.props .\Build.props
+    - DIR C:\Libraries
+    - DIR C:\Libraries\boost_1_82_0
+    - COPY .appveyor\missing.props .\Build.props
     - COPY .appveyor\Unity.props .\Directory.Build.props
   test_script:
     - .\test-suite\bin\QuantLib-test-suite-x64-mt.exe --log_level=message --build_info=yes
