@@ -9,4 +9,6 @@ version: ci.{build}
 
 build_script:
   - DIR C:\Libraries
-  - DIR C:\Libraries\boost_1_82_0
+  - DIR C:\Libraries\boost_1_83_0
+  - DIR C:\Libraries\boost_1_77_0
+
